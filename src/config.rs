@@ -285,6 +285,7 @@ pub struct ConfigFilters {
     pub slots: ConfigSlotsFilter,
     pub accounts: HashMap<String, ConfigAccountsFilter>,
     pub transactions: HashMap<String, ConfigTransactionsFilter>,
+    pub handle_startup: Option<bool>,
 }
 
 impl ConfigFilters {
