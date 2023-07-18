@@ -21,7 +21,7 @@ pub struct PluginInner {
 #[derive(Debug, Default)]
 pub struct Plugin {
     inner: Option<PluginInner>,
-    config: Config,
+    handle_startup: bool,
 }
 
 impl Plugin {
@@ -57,7 +57,7 @@ impl GeyserPlugin for Plugin {
             client,
             prometheus,
         });
-        self.config = config;
+        self.handle_startup = config.filters.handle_startup.unwrap_or(false);
 
         Ok(())
     }
@@ -76,7 +76,7 @@ impl GeyserPlugin for Plugin {
         slot: u64,
         _is_startup: bool,
     ) -> PluginResult<()> {
-        if self.config.filters.handle_startup.unwrap_or(false) && _is_startup {
+        if self.handle_startup && _is_startup {
             return Ok(());
         }
         self.with_client(|sqs| sqs.update_account(account, slot))
