@@ -51,6 +51,7 @@ pub struct FiltersInner {
     slots: ConfigSlotsFilter,
     accounts: AccountsFilter,
     transactions: TransactionsFilter,
+    handle_startup: Option<bool>,
 }
 
 impl FiltersInner {
@@ -60,6 +61,7 @@ impl FiltersInner {
             slots: config.slots,
             accounts: AccountsFilter::new(config.accounts),
             transactions: TransactionsFilter::new(config.transactions, config.redis_logs).await?,
+            handle_startup: config.handle_startup,
         })
     }
 
@@ -69,6 +71,7 @@ impl FiltersInner {
             slots: self.slots,
             accounts: self.accounts.get_config(),
             transactions: self.transactions.get_config(),
+            handle_startup: self.handle_startup,
         }
     }
 }

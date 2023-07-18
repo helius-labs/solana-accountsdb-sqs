@@ -49,7 +49,7 @@ impl GeyserPlugin for Plugin {
         let runtime = Runtime::new().map_err(|error| GeyserPluginError::Custom(Box::new(error)))?;
         let prometheus = PrometheusService::new(&runtime, config.prometheus);
         let client = runtime
-            .block_on(AwsSqsClient::new(config))
+            .block_on(AwsSqsClient::new(config.clone()))
             .map_err(|error| GeyserPluginError::Custom(Box::new(error)))?;
 
         self.inner = Some(PluginInner {
