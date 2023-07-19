@@ -1,6 +1,6 @@
 [package]
 name = "solana-geyser-sqs"
-version = "0.2.1+solana.1.14.18"
+version = "0.2.1+solana.1.14.20"
 edition = "2018"
 publish = false
 
@@ -41,10 +41,10 @@ safe-transmute = "0.11"
 serde = { version = "1.0.132", features = ["derive"] }
 serde_json = "1.0.73"
 serum_dex = "0.5.4"
-solana-geyser-plugin-interface = "=1.14.18"
-solana-logger = "=1.14.18"
-solana-sdk = "=1.14.18"
-solana-transaction-status = "=1.14.18"
+solana-geyser-plugin-interface = "=1.14.20"
+solana-logger = "=1.14.20"
+solana-sdk = "=1.14.20"
+solana-transaction-status = "=1.14.20"
 spl-token = "3.5.0"
 thiserror = "1.0.30"
 tokio = { version = "1.15.0", features = [
